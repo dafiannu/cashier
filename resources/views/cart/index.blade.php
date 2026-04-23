@@ -116,6 +116,7 @@
                                 min="{{ $total > 0 ? $total : 0 }}"
                                 step="0.01"
                                 value="{{ old('pay_total', $total > 0 ? (int) ceil($total) : '') }}"
+                                {{-- value="{{ old('pay_total', '') }}" --}}
                                 class="w-full rounded-lg border border-gray-300 px-4 py-2.5"
                                 required
                             >

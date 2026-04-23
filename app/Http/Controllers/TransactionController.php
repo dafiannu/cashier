@@ -16,7 +16,17 @@ class TransactionController extends Controller
 
     public function history(): View
     {
-        $transactions = Transaction::with('user')->orderBy('created_at', 'desc')->get();
+        $transactions = Transaction::with('user')
+            ->when(request('start_date'), function ($q) {
+                $q->whereDate('date', '>=', request('start_date'));
+            })
+            ->when(request('end_date'), function ($q) {
+                $q->whereDate('date', '<=', request('end_date'));
+            })
+            ->orderBy('date', 'desc')
+            // ->paginate(10)
+            // ->withQueryString();
+            ->get();
 
         return view('transactions.history', compact('transactions'));
     }
