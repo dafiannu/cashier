@@ -10,15 +10,15 @@ use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('dashboard');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'categoryCount' => Category::count(),
         'itemCount' => Item::count(),
-        'lowStockCount' => Item::where('stock', '<=', 5)->count(),
-        'cartCount' => count(session('cart', [])),
+        'transactionCount' => \App\Models\Transaction::count(),
+        'totalSales' => \App\Models\Transaction::sum('total'),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
     Route::get('/transactions/{id}/receipt', [TransactionController::class, 'receipt'])->name('transactions.receipt');
+    Route::get('/transactions/history', [TransactionController::class, 'history'])->name('transactions.history');
+    Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transactions.show');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
