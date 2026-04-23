@@ -35,7 +35,8 @@
                                     <td class="px-4 py-3 whitespace-nowrap text-sm text-right">Rp {{ number_format($tx->total, 0, ',', '.') }}</td>
                                     <td class="px-4 py-3 whitespace-nowrap text-sm text-right">Rp {{ number_format($tx->pay_total, 0, ',', '.') }}</td>
                                     <td class="px-4 py-3 whitespace-nowrap text-sm text-right">
-                                        <a href="{{ route('transactions.show', $tx) }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">{{ __('Detail') }}</a>
+                                        <a class="rounded-md border border-blue-300 px-3 py-1.5 text-blue-600" href="{{ route('transactions.show', $tx) }}">{{ __('Detail') }}</a>
+                                        <a class="rounded-md border border-green-300 px-3 py-1.5 text-green-600" href="{{ route('transactions.receipt', $tx->id) }}">Struk</a>
                                     </td>
                                 </tr>
                             @empty

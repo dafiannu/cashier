@@ -30,7 +30,7 @@
                     </div>
                     <div>
                         <dt class="text-gray-500 dark:text-gray-400">{{ __('Kembalian') }}</dt>
-                        <dd class="font-medium">Rp {{ number_format($transaction->change, 0, ',', '.') }}</dd>
+                        <dd class="font-medium">Rp {{ number_format($transaction->pay_total - $transaction->total, 0, ',', '.') }}</dd>
                     </div>
                 </dl>
             </div>
