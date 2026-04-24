@@ -45,7 +45,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 5h6m-6 4h6m-7 4h8m-9 4h10" />
                         </svg>
-                        {{ __('Transactions') }}
+                        {{ __('History Transaction') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -25,7 +25,17 @@
                                 <div>
                                     <p class="font-medium text-gray-900">{{ $item->name }}</p>
                                     <p class="text-sm text-gray-500">{{ $item->category->name }} | {{ $rupiah($item->price) }}</p>
-                                    <p class="text-sm {{ $item->stock <= 5 ? 'font-semibold text-amber-600' : 'text-gray-500' }}">Stock: {{ $item->stock }}</p>
+                                    <p class="text-sm 
+                                        {{ $item->stock == 0 
+                                            ? 'font-semibold text-red-600' 
+                                            : ($item->stock <= 10 ? 'font-semibold text-amber-600' : 'text-gray-500') }}">
+                                        Stock: {{ $item->stock }}
+                                        @if($item->stock == 0)
+                                            <span class="ml-1">(out of stock)</span>
+                                        @elseif($item->stock <= 10)
+                                            <span class="ml-1">(low stock)</span>
+                                        @endif
+                                    </p>
                                 </div>
                                 <form action="{{ route('cart.add', $item->id) }}" method="POST" class="flex items-center gap-2">
                                     @csrf

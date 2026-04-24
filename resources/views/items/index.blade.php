@@ -14,13 +14,13 @@
 
             <div class="overflow-hidden rounded-xl bg-white shadow-sm">
                 <table class="min-w-full divide-y divide-gray-200 text-sm">
-                    <thead class="bg-gray-50">
+                    <thead class="bg-gray-900">
                         <tr>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600">Name</th>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600">Category</th>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600">Price</th>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600">Stock</th>
-                            <th class="px-6 py-3 text-right font-semibold text-gray-600">Action</th>
+                            <th class="px-6 py-3 text-left font-semibold text-white">Name</th>
+                            <th class="px-6 py-3 text-left font-semibold text-white">Category</th>
+                            <th class="px-6 py-3 text-left font-semibold text-white">Price</th>
+                            <th class="px-6 py-3 text-left font-semibold text-white">Stock</th>
+                            <th class="px-6 py-3 text-right font-semibold text-white">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
@@ -29,7 +29,17 @@
                                 <td class="px-6 py-4 text-gray-900">{{ $item->name }}</td>
                                 <td class="px-6 py-4 text-gray-600">{{ $item->category->name }}</td>
                                 <td class="px-6 py-4 text-gray-600">{{ $rupiah($item->price) }}</td>
-                                <td class="px-6 py-4 {{ $item->stock <= 5 ? 'font-semibold text-amber-600' : 'text-gray-600' }}">{{ $item->stock }}</td>
+                                <td class="px-6 py-4>
+                                 {{ $item->stock == 0 
+                                    ? 'font-semibold text-red-600' 
+                                    : ($item->stock <= 10 ? 'font-semibold text-amber-600' : 'text-gray-500') }}">
+                                Stock: {{ $item->stock }}
+                                @if($item->stock == 0)
+                                    <span class="ml-1">(out of stock)</span>
+                                @elseif($item->stock <= 10)
+                                    <span class="ml-1">(low stock)</span>
+                                @endif
+                                </td>
                                 <td class="px-6 py-4">
                                     <div class="flex justify-end gap-2">
                                         <a href="{{ route('items.edit', $item) }}" class="rounded-md border border-gray-300 px-3 py-1.5 text-gray-700">Edit</a>

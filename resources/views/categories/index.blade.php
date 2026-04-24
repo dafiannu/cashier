@@ -12,11 +12,11 @@
 
             <div class="overflow-hidden rounded-xl bg-white shadow-sm">
                 <table class="min-w-full divide-y divide-gray-200 text-sm">
-                    <thead class="bg-gray-50">
+                    <thead class="bg-gray-900">
                         <tr>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600">Name</th>
-                            <th class="px-6 py-3 text-left font-semibold text-gray-600">Items</th>
-                            <th class="px-6 py-3 text-right font-semibold text-gray-600">Action</th>
+                            <th class="px-6 py-3 text-left font-semibold text-white">Name</th>
+                            <th class="px-6 py-3 text-left font-semibold text-white">Items</th>
+                            <th class="px-6 py-3 text-right font-semibold text-white">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
