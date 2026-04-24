@@ -4,9 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\View\View;
+use App\Models\Category;
+use App\Models\Item;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
+    public function dashboard()
+    {
+        $categoryCount = Category::count();
+        $itemCount = Item::count();
+
+        $transactionCount = Transaction::whereDate('created_at', '=', today())->count();
+        $totalSales = Transaction::whereDate('created_at', '=', today())->sum('total');
+
+        return view('dashboard', compact(
+            'categoryCount',
+            'itemCount',
+            'transactionCount',
+            'totalSales'
+        ));
+    }
+    
     public function receipt(int $id): View
     {
         $transaction = Transaction::with(['user', 'transactionDetails.item'])->findOrFail($id);

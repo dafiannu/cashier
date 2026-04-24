@@ -85,7 +85,7 @@
 
         <div class="receipt">
             <div class="center">
-                <div style="font-size: 18px; font-weight: 700;">SIGMA STORE</div>
+                <div style="font-size: 18px; font-weight: 700;">Dafian's Store</div>
                 <div style="font-size: 12px;">Simple Sales Receipt</div>
             </div>
 

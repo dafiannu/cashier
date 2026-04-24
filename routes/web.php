@@ -13,14 +13,18 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        'categoryCount' => Category::count(),
-        'itemCount' => Item::count(),
-        'transactionCount' => \App\Models\Transaction::count(),
-        'totalSales' => \App\Models\Transaction::sum('total'),
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard', [
+//         'categoryCount' => Category::count(),
+//         'itemCount' => Item::count(),
+//         'transactionCount' => \App\Models\Transaction::count(),
+//         'totalSales' => \App\Models\Transaction::sum('total'),
+//     ]);
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [TransactionController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoryController::class)->except('show');

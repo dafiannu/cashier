@@ -17,11 +17,11 @@
                     <p class="mt-3 text-3xl font-semibold text-gray-900">{{ $itemCount }}</p>
                 </div>
                 <div class="rounded-xl bg-white p-6 shadow-sm">
-                    <p class="text-sm text-gray-500">Transactions</p>
+                    <p class="text-sm text-gray-500">Today's Transactions</p>
                     <p class="mt-3 text-3xl font-semibold text-gray-900">{{ $transactionCount }}</p>
                 </div>
                 <div class="rounded-xl bg-white p-6 shadow-sm">
-                    <p class="text-sm text-gray-500">Total Sales</p>
+                    <p class="text-sm text-gray-500">Today's Total Sales</p>
                     <p class="mt-3 text-3xl font-semibold text-gray-900">${{ number_format($totalSales, 2) }}</p>
                 </div>
             </div>
